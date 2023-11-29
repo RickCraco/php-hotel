@@ -1,3 +1,10 @@
+<?php 
+include __DIR__ . '/model/db.php';
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
