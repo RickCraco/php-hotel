@@ -19,16 +19,18 @@ if(isset($_GET['parking'])) {
         $hotels = $temp;
     }
     */
-    /*
-    function parkingFilter($hotel, $parking) {
-        if ($parking === 'all' || $hotel['parking'] == (bool) $parking) {
+    
+    function parkingFilter($hotel) {
+        $park = $_GET['parking'];
+
+        if ($park === 'all' || $hotel['parking'] == (bool) $park) {
             return true;
         }
     } 
     
-    $hotels = array_filter($hotels, 'parkingFilter', $parking); */    
+    $hotels = array_filter($hotels, 'parkingFilter');  
 
-    $hotels = array_filter($hotels, fn($hotel) => $parking === 'all' || $hotel['parking'] == (bool) $parking);
+    //$hotels = array_filter($hotels, fn($hotel) => $parking === 'all' || $hotel['parking'] == (bool) $parking);
     
 }
 
@@ -48,7 +50,16 @@ if(isset($_GET['vote'])){
         }
         $hotels = $temp;
     } */
-    $hotels = array_filter($hotels, fn($hotel) => $hotel['vote'] === '' || $hotel['vote'] >= (int) $vote);
+
+    function voteFilter($hotel) {
+        $vote = $_GET['vote'];
+        if ($vote === '' || $hotel['vote'] >= (int) $vote) {
+            return true;
+        }    
+    }
+
+    $hotels = array_filter($hotels, 'voteFilter');
+    //$hotels = array_filter($hotels, fn($hotel) => $hotel['vote'] === '' || $hotel['vote'] >= (int) $vote);
 } 
 
 //var_dump($hotels);
