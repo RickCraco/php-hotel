@@ -3,15 +3,37 @@ include __DIR__ . '/model/db.php';
 
 //var_dump($hotels);
 
-function filterHotels($hotels, $parking, $vote){
-    $hotels = array_filter($hotels, fn($hotel) => $hotel['parking'] == $parking && $hotel['vote'] >= $vote);
+if(isset($_GET['parking'])) {
+    $parking = $_GET['parking'];
+    $temp = [];
+
+    if($parking == 'all') {
+        $hotels = $hotels;
+    }else{
+        foreach($hotels as $hotel) {
+            if($hotel['parking'] == (bool) $parking) {
+                $temp[] = $hotel;
+            }
+        }
+        $hotels = $temp;
+    }
+    
 }
 
-if(isset($_GET['parking']) && isset($_GET['vote'])) {
-    $parking = $_GET['parking'];
+if(isset($_GET['vote'])){
     $vote = $_GET['vote'];
+    $temp = [];
 
-    filterHotels($hotels, $parking, $vote);
+    if($vote == null) {
+        $hotels = $hotels;
+    }else{
+        foreach($hotels as $hotel) {
+            if($hotel['vote'] == (int) $vote) {
+                $temp[] = $hotel;
+            }
+        }
+        $hotels = $temp;
+    }
 }
 ?>
 
@@ -54,12 +76,12 @@ if(isset($_GET['parking']) && isset($_GET['vote'])) {
         <label for="parking">Parcheggio : </label>
         <select name="parking" id="parking">
             <option value="all">All</option>
-            <option value="yes">Si</option>
-            <option value="no">No</option>
+            <option value="1">Si</option>
+            <option value="0">No</option>
         </select>
 
         <label for="vote">Voto minimo: </label>
-        <input type="number" name="vote">
+        <input type="number" name="vote" value="vote">
 
         <button type="submit">Filtra</button>
     </form>
