@@ -19,7 +19,7 @@ if(isset($_GET['parking'])) {
         $hotels = $temp;
     }
     */
-    $hotels = array_filter($hotels, fn($hotel) => $hotel['parking'] === 'all' || $hotel['parking'] == (bool) $parking);
+    $hotels = array_filter($hotels, fn($hotel) => $parking === 'all' || $hotel['parking'] == (bool) $parking);
     
 }
 
@@ -42,7 +42,7 @@ if(isset($_GET['vote'])){
     $hotels = array_filter($hotels, fn($hotel) => $hotel['vote'] === '' || $hotel['vote'] >= (int) $vote);
 } 
 
-var_dump($hotels);
+//var_dump($hotels);
 ?>
 
 
@@ -57,7 +57,7 @@ var_dump($hotels);
 </head>
 <body>
     
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Nome</th>
