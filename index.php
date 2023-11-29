@@ -11,7 +11,7 @@ if(isset($_GET['parking']) && isset($_GET['vote'])) {
     $parking = $_GET['parking'];
     $vote = $_GET['vote'];
 
-
+    filterHotels($hotels, $parking, $vote);
 }
 ?>
 
