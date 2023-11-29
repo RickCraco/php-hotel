@@ -6,7 +6,8 @@ include __DIR__ . '/model/db.php';
 if(isset($_GET['parking'])) {
     $parking = $_GET['parking'];
     $temp = [];
-    
+
+    /*
     if($parking == 'all') {
         $hotels = $hotels;
     }else{
@@ -17,13 +18,17 @@ if(isset($_GET['parking'])) {
         }
         $hotels = $temp;
     }
+    */
+    $hotels = array_filter($hotels, fn($hotel) => $hotel['parking'] === 'all' || $hotel['parking'] == (bool) $parking);
     
 }
+
 
 if(isset($_GET['vote'])){
     $vote = $_GET['vote'];
     $temp = [];
 
+    /*
     if($vote == null) {
         $hotels = $hotels;
     }else{
@@ -33,8 +38,9 @@ if(isset($_GET['vote'])){
             }
         }
         $hotels = $temp;
-    }
-}
+    } */
+    $hotels = array_filter($hotels, fn($hotel) => $hotel['vote'] === '' || $hotel['vote'] == (int) $vote);
+} 
 ?>
 
 
