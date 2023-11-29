@@ -6,7 +6,7 @@ include __DIR__ . '/model/db.php';
 if(isset($_GET['parking'])) {
     $parking = $_GET['parking'];
     $temp = [];
-
+    
     if($parking == 'all') {
         $hotels = $hotels;
     }else{
