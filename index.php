@@ -40,5 +40,19 @@ include __DIR__ . '/model/db.php';
         </tbody>
     </table>
 
+    <form action="index.php" method="GET">
+        <label for="parking">Parcheggio : </label>
+        <select name="parking" id="parking">
+            <option value="all">All</option>
+            <option value="yes">Si</option>
+            <option value="no">No</option>
+        </select>
+
+        <label for="vote">Voto minimo: </label>
+        <input type="number" name="vote">
+
+        <button type="submit">Filtra</button>
+    </form>
+
 </body>
 </html>
