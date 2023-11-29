@@ -19,7 +19,16 @@ if(isset($_GET['parking'])) {
         $hotels = $temp;
     }
     */
-    $hotels = array_filter($hotels, fn($hotel) => $parking === 'all' || $hotel['parking'] == (bool) $parking);
+    /*
+    function parkingFilter($hotel, $parking) {
+        if ($parking === 'all' || $hotel['parking'] == (bool) $parking) {
+            return true;
+        }
+    } */
+    
+    $hotels = array_filter($hotels, 'parkingFilter', $parking);    
+
+    //$hotels = array_filter($hotels, fn($hotel) => $parking === 'all' || $hotel['parking'] == (bool) $parking);
     
 }
 
