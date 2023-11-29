@@ -39,8 +39,10 @@ if(isset($_GET['vote'])){
         }
         $hotels = $temp;
     } */
-    $hotels = array_filter($hotels, fn($hotel) => $hotel['vote'] === '' || $hotel['vote'] == (int) $vote);
+    $hotels = array_filter($hotels, fn($hotel) => $hotel['vote'] === '' || $hotel['vote'] >= (int) $vote);
 } 
+
+var_dump($hotels);
 ?>
 
 
