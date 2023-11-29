@@ -53,7 +53,7 @@ if(isset($_GET['vote'])){
 
     function voteFilter($hotel) {
         $vote = $_GET['vote'];
-        if ($vote === '' || $hotel['vote'] >= (int) $vote) {
+        if ($vote === '' || $hotel['vote'] == (int) $vote) {
             return true;
         }    
     }
