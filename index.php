@@ -3,6 +3,16 @@ include __DIR__ . '/model/db.php';
 
 //var_dump($hotels);
 
+function filterHotels($hotels, $parking, $vote){
+    $hotels = array_filter($hotels, fn($hotel) => $hotel['parking'] == $parking && $hotel['vote'] >= $vote);
+}
+
+if(isset($_GET['parking']) && isset($_GET['vote'])) {
+    $parking = $_GET['parking'];
+    $vote = $_GET['vote'];
+
+
+}
 ?>
 
 
