@@ -17,5 +17,28 @@ include __DIR__ . '/model/db.php';
 </head>
 <body>
     
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Parcheggio</th>
+                <th>Voto</th>
+                <th>Distanza dal centro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($hotels as $hotel): ?>
+                <tr>
+                    <td><?= $hotel['name'] ?></td>
+                    <td><?= $hotel['description'] ?></td>
+                    <td><?= $hotel['parking'] ? 'Si' : 'No' ?></td>
+                    <td><?= $hotel['vote'] ?></td>
+                    <td><?= $hotel['distance_to_center'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
 </body>
 </html>
