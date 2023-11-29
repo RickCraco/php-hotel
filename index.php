@@ -24,11 +24,11 @@ if(isset($_GET['parking'])) {
         if ($parking === 'all' || $hotel['parking'] == (bool) $parking) {
             return true;
         }
-    } */
+    } 
     
-    $hotels = array_filter($hotels, 'parkingFilter', $parking);    
+    $hotels = array_filter($hotels, 'parkingFilter', $parking); */    
 
-    //$hotels = array_filter($hotels, fn($hotel) => $parking === 'all' || $hotel['parking'] == (bool) $parking);
+    $hotels = array_filter($hotels, fn($hotel) => $parking === 'all' || $hotel['parking'] == (bool) $parking);
     
 }
 
